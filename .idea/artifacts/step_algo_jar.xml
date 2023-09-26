@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="step-algo:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/step_algo_jar</output-path>
+    <root id="archive" name="step-algo.jar">
+      <element id="module-output" name="algorithm" />
+      <element id="module-output" name="common" />
+      <element id="module-output" name="structure" />
+    </root>
+  </artifact>
+</component>
