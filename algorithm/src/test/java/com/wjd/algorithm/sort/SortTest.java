@@ -29,6 +29,11 @@ public class SortTest {
     }
 
     @Test
+    void testBinaryInsert() {
+        testSort(new BinaryInsertSort());
+    }
+
+    @Test
     void testShell() {
         testSort(new ShellSort());
     }

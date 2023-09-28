@@ -8,23 +8,25 @@
 
 ### 1.1 排序（Sort）
 
-- 插入排序
-  - [插入排序（Insert Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/InsertSort.java)
-  - [希尔排序（Shell Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/ShellSort.java)
-- 选择排序
-  - [选择排序（Select Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/SelectSort.java)
-  - [堆排序（Heap Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/HeapSort.java)
 - 交换排序
   - [冒泡排序（Bubble Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/BubbleSort.java)
   - [快速排序（Quick Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/QuickSort.java)
   - [3-向快排（3-Way Quick Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/Quick3WaySort.java)
+- 选择排序
+  - [选择排序（Select Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/SelectSort.java)
+  - [堆排序（Heap Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/HeapSort.java)
+- 插入排序
+  - [插入排序（Insert Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/InsertSort.java)
+  - [二分插入排序（Binary Insert Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/BinaryInsertSort.java)
+  - [希尔排序（Shell Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/ShellSort.java)
 - 归并排序
   - [归并排序（Merge Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/MergeSort.java)
-- 桶排序
+- 分布排序
   - [桶排序（Bucket Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/BucketSort.java)
   - [计数排序（Count Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/CountSort.java)
-- 基数排序
   - [基数排序（Radix Sort）](./algorithm/src/main/java/com/wjd/algorithm/sort/RadixSort.java)
+- 混合排序
+  - [Tim 排序（Tim Sort）]
 
 ### 1.2 二分法（Binary）
 
