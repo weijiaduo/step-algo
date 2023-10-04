@@ -58,6 +58,10 @@ public final class IOUtils {
             ret = toStringArray(line);
         } else if (int[][].class.equals(type)) {
             ret = toIntMatrix(line);
+        } else if (Integer[][].class.equals(type)) {
+            ret = toBoxIntMatrix(line);
+        } else if (char[][].class.equals(type)) {
+            ret = toCharMatrix(line);
         } else if (type instanceof ParameterizedType parameterizedType) {
             if (List.class == parameterizedType.getRawType()) {
                 Type elemType = parameterizedType.getActualTypeArguments()[0];
@@ -82,7 +86,12 @@ public final class IOUtils {
 
     public static Character toChar(String line) {
         try {
-            return line.trim().charAt(0);
+            line = line.trim();
+            if (line.startsWith("'") && line.endsWith("'")) {
+                return line.charAt(1);
+            } else {
+                return line.charAt(0);
+            }
         } catch (Exception e) {
             return null;
         }
@@ -288,6 +297,16 @@ public final class IOUtils {
         Integer[][] arr = new Integer[m][];
         for (int i = 0; i < m; i++) {
             arr[i] = toBoxIntArray(tokens[i]);
+        }
+        return arr;
+    }
+
+    public static char[][] toCharMatrix(String line) {
+        String[] tokens = line.split("],");
+        int m = tokens.length;
+        char[][] arr = new char[m][];
+        for (int i = 0; i < m; i++) {
+            arr[i] = toCharArray(tokens[i]);
         }
         return arr;
     }
