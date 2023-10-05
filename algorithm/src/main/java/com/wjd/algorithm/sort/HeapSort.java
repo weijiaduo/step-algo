@@ -2,6 +2,12 @@ package com.wjd.algorithm.sort;
 
 /**
  * 堆排序
+ * <p>
+ * 时间复杂度：最好 O(n) 最差 O(nlogn) 平均 O(nlogn)
+ * <p>
+ * 空间复杂度：O(1)
+ * <p>
+ * 稳定性：不稳定
  *
  * @author weijiaduo
  * @since 2023/2/26
