@@ -69,6 +69,36 @@ public class QuickSort implements Sort {
     }
 
     /**
+     * 二分数组（另一种写法）
+     *
+     * @param arr   数组
+     * @param start [start, end)
+     * @param end   [start, end)
+     * @return 分隔点索引
+     */
+    private int partition2(int[] arr, int start, int end) {
+        // 选取分区点
+        int p = pivot(arr, start, end - 1);
+        // 将分区点放到最前面
+        swap(arr, start, p);
+        int ref = arr[start];
+        int lp = start, rp = end - 1;
+        // 将数据与分区点对比，分成小于和大于2部分
+        while (lp < rp) {
+            while (lp < rp && arr[rp] >= ref) {
+                rp--;
+            }
+            while (lp < rp && arr[lp] <= ref) {
+                lp++;
+            }
+            swap(arr, lp, rp);
+        }
+        // 将分区点放到它最终的位置
+        swap(arr, start, lp);
+        return lp;
+    }
+
+    /**
      * 选择分区点（选择三个点的中值位置）
      *
      * @param arr 数组
