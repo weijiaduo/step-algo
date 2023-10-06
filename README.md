@@ -28,8 +28,9 @@
 - 混合排序
   - [Tim 排序（Tim Sort）]
 
-### 1.2 二分法（Binary）
+### 1.2 二分查找（Binary Search）
 
+- [等于（Equal）](./algorithm/src/main/java/com/wjd/algorithm/binary/EqualSearch.java)
 - [第一个等于（First Equal）](./algorithm/src/main/java/com/wjd/algorithm/binary/FirstEqualSearch.java)
 - [最后一个等于（Last Equal）](./algorithm/src/main/java/com/wjd/algorithm/binary/LastEqualSearch.java)
 - [第一个大于等于（First Great Equal）](./algorithm/src/main/java/com/wjd/algorithm/binary/FirstGreatEqualSearch.java)
