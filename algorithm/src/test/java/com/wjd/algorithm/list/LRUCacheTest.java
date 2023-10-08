@@ -1,4 +1,4 @@
-package com.wjd.structure.list;
+package com.wjd.algorithm.list;
 
 import org.junit.jupiter.api.Test;
 

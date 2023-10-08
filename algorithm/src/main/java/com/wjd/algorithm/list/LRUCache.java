@@ -1,12 +1,12 @@
-package com.wjd.structure.list;
+package com.wjd.algorithm.list;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 146. LRU 缓存
+ * LRU 缓存
  * <p>
- * 请你设计并实现一个满足 LRU (最近最少使用) 缓存 约束的数据结构。
+ * 设计并实现一个满足 LRU (最近最少使用) 缓存 约束的数据结构。
  * <p>
  * 函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。
  *

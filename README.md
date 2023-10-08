@@ -39,10 +39,11 @@
 ## 二、链表（List）
 
 - 结构（Structure）
-  - [单向链表（Single List）](./structure/src/main/java/com/wjd/structure/list/SingleList.java)
-  - [双向链表（Double List）](./structure/src/main/java/com/wjd/structure/list/DoubleList.java)
-- 案例（Cases）
-  - [LRU 缓存（LRU Cache）](./structure/src/main/java/com/wjd/structure/list/LRUCache.java)
+  - [单向链表（Singly Linked List）](./structure/src/main/java/com/wjd/structure/list/SingleList.java)
+  - [双向链表（Doubly Linked List）](./structure/src/main/java/com/wjd/structure/list/DoubleList.java)
+  - [循环链表（Circular Linked List）]
+- 应用（Cases）
+  - [LRU 缓存（LRU Cache）](./algorithm/src/main/java/com/wjd/algorithm/list/LRUCache.java)
 
 ## 三、队列（Queue）
 
