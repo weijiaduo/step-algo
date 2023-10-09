@@ -27,7 +27,7 @@ public interface Stack {
      *
      * @return 栈顶值
      */
-    int top();
+    int peek();
 
     /**
      * 栈大小

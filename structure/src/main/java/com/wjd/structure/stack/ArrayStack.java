@@ -44,7 +44,7 @@ public class ArrayStack implements Stack {
     }
 
     @Override
-    public int top() {
+    public int peek() {
         if (isEmpty()) {
             throw new IllegalStateException();
         }

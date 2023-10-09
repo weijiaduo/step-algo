@@ -32,9 +32,9 @@ class ListStackTest {
         Stack stack = new ListStack();
         stack.push(1);
         stack.push(2);
-        assertEquals(2, stack.top());
+        assertEquals(2, stack.peek());
         stack.push(3);
-        assertEquals(3, stack.top());
+        assertEquals(3, stack.peek());
     }
 
     @Test
