@@ -56,8 +56,14 @@
 
 ## 四、栈（Stack）
 
-- [顺序栈（Array-Stack）](./structure/src/main/java/com/wjd/structure/stack/ArrayStack.java)
-- [链式栈（List-Stack）](./structure/src/main/java/com/wjd/structure/stack/ListStack.java)
+- 栈（Stack）
+  - [顺序栈（Array-Stack）](./structure/src/main/java/com/wjd/structure/stack/ArrayStack.java)
+  - [链式栈（List-Stack）](./structure/src/main/java/com/wjd/structure/stack/ListStack.java)
+- 单调栈（Monotonic Stack）
+  - [下一个更大值（Next Greater）](./algorithm/src/main/java/com/wjd/algorithm/stack/monotonic/NextGreater.java)
+  - [上一个更大值（Prev Greater）](./algorithm/src/main/java/com/wjd/algorithm/stack/monotonic/PrevGreater.java)
+  - [下一个更小值（Next Smaller）](./algorithm/src/main/java/com/wjd/algorithm/stack/monotonic/NextSmaller.java)
+  - [上一个更小值（Prev Smaller）](./algorithm/src/main/java/com/wjd/algorithm/stack/monotonic/PrevSmaller.java)
 
 ## 五、树（Tree）
 
