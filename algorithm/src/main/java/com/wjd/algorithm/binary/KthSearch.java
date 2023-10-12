@@ -1,16 +1,33 @@
 package com.wjd.algorithm.binary;
 
 /**
- * 数组中的第K个最大元素
+ * 数组中的第 K 个最大元素
  *
  * @author weijiaduo
  * @since 2023/7/2
  */
 public class KthSearch implements Search {
 
+    /**
+     * 查询方式
+     */
+    private final int type;
+
+    public KthSearch() {
+        this(1);
+    }
+
+    public KthSearch(int type) {
+        this.type = type;
+    }
+
     @Override
     public int search(int[] arr, int k) {
-        return iterate(arr, k);
+        if (type == 2) {
+            return recursive(arr, k);
+        } else {
+            return iterate(arr, k);
+        }
     }
 
     /**

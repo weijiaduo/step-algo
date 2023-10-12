@@ -8,10 +8,28 @@ package com.wjd.algorithm.binary;
  */
 public class LastLessEqualSearch implements Search {
 
+    /**
+     * 查询方式
+     */
+    private final int type;
+
+    public LastLessEqualSearch() {
+        this(1);
+    }
+
+    public LastLessEqualSearch(int type) {
+        this.type = type;
+    }
+
     @Override
     public int search(int[] arr, int target) {
-        return search1(arr, target);
-        // return search2(arr, target);
+        if (type == 3) {
+            return search3(arr, target);
+        } else if (type == 2) {
+            return search2(arr, target);
+        } else {
+            return search1(arr, target);
+        }
     }
 
     /**
@@ -36,10 +54,30 @@ public class LastLessEqualSearch implements Search {
     }
 
     /**
-     * 根据循环不变量来实现
+     * 代码好看的算法
      */
     private int search2(int[] arr, int target) {
-        // 循环不变量
+        int ret = -1;
+        int n = arr.length;
+        int low = 0, high = n - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] <= target) {
+                ret = mid;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        // target < arr[0]
+        return ret;
+    }
+
+    /**
+     * 优雅但难理解的写法，利用循环不变量来实现
+     */
+    private int search3(int[] arr, int target) {
+        // 循环不变量：
         // arr[low - 1] <= target
         // arr[high + 1] > target
         int n = arr.length;
