@@ -16,7 +16,7 @@ public class PrevSmaller {
      * 正向遍历，不存在更小值时返回 -1
      *
      * @param arr 数组
-     * @return 下一个更小元素索引数组
+     * @return 上一个更小元素索引数组
      */
     public int[] forward(int[] arr) {
         int n = arr.length;
@@ -38,7 +38,7 @@ public class PrevSmaller {
      * 逆向遍历，不存在更小值时返回 -1
      *
      * @param arr 数组
-     * @return 下一个更小元素索引数组
+     * @return 上一个更小元素索引数组
      */
     public int[] backward(int[] arr) {
         int n = arr.length;
