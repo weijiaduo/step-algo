@@ -22,14 +22,14 @@ public class PrevSmaller {
         int n = arr.length;
         int[] ans = new int[n];
         Arrays.fill(ans, -1);
-        Deque<Integer> incStack = new LinkedList<>();
+        Deque<Integer> decStack = new LinkedList<>();
         for (int i = 0; i < n; i++) {
             // 注意这里是 <=
-            while (!incStack.isEmpty() && arr[i] <= arr[incStack.peek()]) {
-                incStack.pop();
+            while (!decStack.isEmpty() && arr[i] <= arr[decStack.peek()]) {
+                decStack.pop();
             }
-            ans[i] = incStack.isEmpty() ? -1 : incStack.peek();
-            incStack.push(i);
+            ans[i] = decStack.isEmpty() ? -1 : decStack.peek();
+            decStack.push(i);
         }
         return ans;
     }
@@ -44,14 +44,14 @@ public class PrevSmaller {
         int n = arr.length;
         int[] ans = new int[n];
         Arrays.fill(ans, -1);
-        Deque<Integer> incStack = new LinkedList<>();
+        Deque<Integer> decStack = new LinkedList<>();
         for (int i = n - 1; i >= 0; i--) {
             // 注意这里是 <
-            while (!incStack.isEmpty() && arr[i] < arr[incStack.peek()]) {
-                int idx = incStack.pop();
+            while (!decStack.isEmpty() && arr[i] < arr[decStack.peek()]) {
+                int idx = decStack.pop();
                 ans[idx] = i;
             }
-            incStack.push(i);
+            decStack.push(i);
         }
         return ans;
     }
