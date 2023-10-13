@@ -1,11 +1,11 @@
 package com.wjd.algorithm.sort;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.Random;
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**
  * @author weijiaduo
@@ -40,7 +40,9 @@ public class SortTest {
 
     @Test
     void testQuick() {
-        testSort(new QuickSort());
+        testSort(new QuickSort(1));
+        testSort(new QuickSort(2));
+        testSort(new QuickSort(3));
     }
 
     @Test
@@ -70,7 +72,7 @@ public class SortTest {
             int[] actual = Arrays.copyOf(expect, expect.length);
             Arrays.sort(expect);
             sort.sort(actual);
-            assertArrayEquals(actual, expect);
+            assertArrayEquals(expect, actual);
         }
         System.out.println(System.nanoTime() - start);
     }
