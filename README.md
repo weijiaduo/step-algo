@@ -1,6 +1,6 @@
 # step-algo
 
-千里之行，始于足下。
+算法之行，始于足下。
 
 > https://weijiaduo.github.io/
 
