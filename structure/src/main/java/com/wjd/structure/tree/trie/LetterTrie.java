@@ -10,18 +10,22 @@ import java.util.List;
  */
 public class LetterTrie implements Trie {
 
+    static class Node {
+        // 下一层节点
+        Node[] children = new Node[26];
+        // 是否是字符串末尾节点
+        boolean end = false;
+    }
+
+    /**
+     * 根节点
+     */
+    Node root = new Node();
+
     /**
      * 基础字母，相对索引
      */
-    char base = 'a';
-    /**
-     * 下一层节点
-     */
-    LetterTrie[] children = new LetterTrie[26];
-    /**
-     * 是否是字符串末尾节点
-     */
-    boolean isEnd = false;
+    char base;
 
     public LetterTrie() {
         this(false);
@@ -52,17 +56,17 @@ public class LetterTrie implements Trie {
      */
     @Override
     public void insert(String word) {
-        LetterTrie cur = this;
+        Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
-            LetterTrie trie = cur.children[ch - base];
+            Node trie = cur.children[ch - base];
             if (trie == null) {
-                trie = new LetterTrie();
+                trie = new Node();
                 cur.children[ch - base] = trie;
             }
             cur = trie;
         }
-        cur.isEnd = true;
+        cur.end = true;
     }
 
     /**
@@ -73,8 +77,8 @@ public class LetterTrie implements Trie {
      */
     @Override
     public boolean search(String word) {
-        LetterTrie trie = searchPrefix(word);
-        return trie != null && trie.isEnd;
+        Node trie = searchPrefix(word);
+        return trie != null && trie.end;
     }
 
     /**
@@ -94,8 +98,8 @@ public class LetterTrie implements Trie {
      * @param prefix 前缀
      * @return 前缀的最后一个节点
      */
-    private LetterTrie searchPrefix(String prefix) {
-        LetterTrie cur = this;
+    private Node searchPrefix(String prefix) {
+        Node cur = root;
         for (int i = 0; i < prefix.length(); i++) {
             char ch = prefix.charAt(i);
             cur = cur.children[ch - base];
@@ -114,14 +118,14 @@ public class LetterTrie implements Trie {
      */
     @Override
     public String minPrefix(String word) {
-        LetterTrie cur = this;
+        Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
             cur = cur.children[ch - base];
             if (cur == null) {
                 return word;
             }
-            if (cur.isEnd) {
+            if (cur.end) {
                 return word.substring(0, i + 1);
             }
         }
@@ -136,31 +140,31 @@ public class LetterTrie implements Trie {
      */
     @Override
     public boolean match(String word) {
-        LetterTrie trie = dfsMatch(this, word, 0);
-        return trie != null && trie.isEnd;
+        Node trie = dfsMatch(root, word, 0);
+        return trie != null && trie.end;
     }
 
     /**
      * 匹配字符串
      */
-    private LetterTrie dfsMatch(LetterTrie root, String word, int index) {
+    private Node dfsMatch(Node root, String word, int index) {
         if (root == null) {
             return null;
         }
         if (index == word.length()) {
-            return root.isEnd ? root : null;
+            return root.end ? root : null;
         }
         char ch = word.charAt(index);
         if (Character.isLetter(ch)) {
-            LetterTrie child = root.children[ch - base];
+            Node child = root.children[ch - base];
             if (child == null) {
                 return null;
             }
             return dfsMatch(child, word, index + 1);
         } else {
             // . 可以匹配任意字符
-            for (LetterTrie t : root.children) {
-                LetterTrie ret = dfsMatch(t, word, index + 1);
+            for (Node t : root.children) {
+                Node ret = dfsMatch(t, word, index + 1);
                 if (ret != null) {
                     return ret;
                 }
