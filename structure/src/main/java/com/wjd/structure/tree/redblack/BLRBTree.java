@@ -153,22 +153,25 @@ public class BLRBTree implements RBTree {
      */
     private RBTNode swapReplacer(RBTNode h) {
         // 寻找交换节点
-        RBTNode r = h;
-        if (h.left != null && h.right != null) {
-            // 使用右边最小值
+        if (h == null) {
+            return null;
+        }
+        RBTNode r;
+        if (h.right != null) {
+            // 右边最小值，即后继值
             r = h.right;
             while (r.left != null) {
                 r = r.left;
             }
-        } else if (h.right != null) {
-            // 此时右边最多一个红色节点
-            r = h.right;
         } else if (h.left != null) {
-            // 此时左边最多一个红色节点
+            // 左边最大值，即前继值
             r = h.left;
-        }
-        if (r == h) {
-            return r;
+            while (r.right != null) {
+                r = r.right;
+            }
+        } else {
+            // 叶子节点
+            return h;
         }
 
         // 交换两个节点
