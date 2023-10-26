@@ -2,6 +2,9 @@ package com.wjd.structure.tree.redblack;
 
 import java.util.Arrays;
 
+import static com.wjd.structure.tree.redblack.RBTNode.BLACK;
+import static com.wjd.structure.tree.redblack.RBTNode.RED;
+
 /**
  * 双偏向（Both-Leaning）红黑树（2-3-4树）
  * <p>
@@ -13,15 +16,6 @@ import java.util.Arrays;
  * @since 2023/2/2
  */
 public class BLRBTree implements RBTree {
-
-    /**
-     * 红色
-     */
-    private static final boolean RED = true;
-    /**
-     * 黑色
-     */
-    private static final boolean BLACK = false;
 
     /**
      * 根节点
@@ -158,23 +152,68 @@ public class BLRBTree implements RBTree {
      * @return 替换节点
      */
     private RBTNode swapReplacer(RBTNode h) {
-        RBTNode replacer = h;
+        // 寻找交换节点
+        RBTNode r = h;
         if (h.left != null && h.right != null) {
-            replacer = h.right;
-            while (replacer.left != null) {
-                replacer = replacer.left;
+            // 使用右边最小值
+            r = h.right;
+            while (r.left != null) {
+                r = r.left;
             }
         } else if (h.right != null) {
-            replacer = h.right;
+            // 此时右边最多一个红色节点
+            r = h.right;
         } else if (h.left != null) {
-            replacer = h.left;
+            // 此时左边最多一个红色节点
+            r = h.left;
+        }
+        if (r == h) {
+            return r;
         }
 
-        // TODO: 简单点，仅替换值，节点不变
-        int val = h.val;
-        h.val = replacer.val;
-        replacer.val = val;
-        return replacer;
+        // 交换两个节点
+        RBTNode t = new RBTNode(-1);
+        replaceNode(h, t);
+        replaceNode(r, h);
+        replaceNode(t, r);
+        return r;
+    }
+
+    /**
+     * 替换节点
+     *
+     * @param h 原始节点
+     * @param r 替换节点
+     */
+    private void replaceNode(RBTNode h, RBTNode r) {
+        if (h == null || r == null) {
+            return;
+        }
+
+        RBTNode hp = h.parent, hl = h.left, hr = h.right;
+        // 节点颜色保持原状
+        r.color = h.color;
+        // 左节点
+        r.left = hl;
+        if (hl != null) {
+            hl.parent = r;
+        }
+        // 右节点
+        r.right = hr;
+        if (hr != null) {
+            hr.parent = r;
+        }
+        // 父节点
+        r.parent = hp;
+        if (hp == null) {
+            root = r;
+        } else if (hp.left == h) {
+            hp.left = r;
+        } else {
+            hp.right = r;
+        }
+        // 删除引用
+        h.parent = h.left = h.right = null;
     }
 
     /**

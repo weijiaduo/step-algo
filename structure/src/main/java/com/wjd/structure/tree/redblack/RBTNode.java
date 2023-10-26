@@ -9,6 +9,15 @@ package com.wjd.structure.tree.redblack;
 public class RBTNode {
 
     /**
+     * 红色
+     */
+    public static final boolean RED = true;
+    /**
+     * 黑色
+     */
+    public static final boolean BLACK = false;
+
+    /**
      * 父节点
      */
     public RBTNode parent;
@@ -27,7 +36,7 @@ public class RBTNode {
     /**
      * 节点颜色
      */
-    public boolean color = true;
+    public boolean color = RED;
 
     public RBTNode(int val) {
         this.val = val;
@@ -38,4 +47,5 @@ public class RBTNode {
         String type = color ? "r" : "b";
         return type + val;
     }
+
 }

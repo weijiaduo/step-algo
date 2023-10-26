@@ -2,6 +2,9 @@ package com.wjd.structure.tree.redblack;
 
 import java.util.Arrays;
 
+import static com.wjd.structure.tree.redblack.RBTNode.BLACK;
+import static com.wjd.structure.tree.redblack.RBTNode.RED;
+
 /**
  * 左偏向（Left-Leaning）红黑树（2-3树）
  * <p>
@@ -15,15 +18,6 @@ import java.util.Arrays;
  * @since 2023/1/24
  */
 public class LLRBTree implements RBTree {
-
-    /**
-     * 红色
-     */
-    private static final boolean RED = true;
-    /**
-     * 黑色
-     */
-    private static final boolean BLACK = false;
 
     /**
      * 根节点
