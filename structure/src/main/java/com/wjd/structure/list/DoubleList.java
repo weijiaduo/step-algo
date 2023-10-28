@@ -8,33 +8,21 @@ package com.wjd.structure.list;
  */
 public class DoubleList implements List {
 
-    static class Node {
-        int val;
-        Node prev;
-        Node next;
-
-        public Node(int val) {
-            this.val = val;
-            this.prev = null;
-            this.next = null;
-        }
-    }
-
     /**
      * 哨兵头节点
      */
-    private Node head;
+    private final ListNode head;
     /**
      * 尾节点
      */
-    private Node tail;
+    private ListNode tail;
     /**
      * 链表大小
      */
     private int size;
 
     public DoubleList() {
-        head = new Node(-1);
+        head = new ListNode(-1);
         tail = head;
         size = 0;
     }
@@ -43,7 +31,7 @@ public class DoubleList implements List {
     public int get(int index) {
         checkIndex(index);
 
-        Node p = head;
+        ListNode p = head;
         for (int i = 0; i <= index && p != null; i++) {
             p = p.next;
         }
@@ -52,9 +40,9 @@ public class DoubleList implements List {
 
     @Override
     public void add(int val) {
-        Node newNode = new Node(val);
-        link(tail, newNode);
-        tail = newNode;
+        ListNode newListNode = new ListNode(val);
+        link(tail, newListNode);
+        tail = newListNode;
         size++;
     }
 
@@ -67,11 +55,11 @@ public class DoubleList implements List {
             return;
         }
 
-        Node p = head;
+        ListNode p = head;
         for (int i = 0; i < index && p.next != null; i++) {
             p = p.next;
         }
-        link(p, new Node(val));
+        link(p, new ListNode(val));
         size++;
     }
 
@@ -79,26 +67,26 @@ public class DoubleList implements List {
     public int remove(int index) {
         checkIndex(index);
 
-        Node p = head;
+        ListNode p = head;
         for (int i = 0; i < index && p.next != null; i++) {
             p = p.next;
         }
-        if (p == null || p.next == null) {
+        if (p.next == null) {
             return -1;
         }
 
-        Node node = p.next;
+        ListNode ListNode = p.next;
         unlink(p);
-        if (tail == node) {
+        if (tail == ListNode) {
             tail = p;
         }
         size--;
-        return node.val;
+        return ListNode.val;
     }
 
     @Override
     public boolean contains(int val) {
-        Node p = head.next;
+        ListNode p = head.next;
         while (p != null) {
             if (p.val == val) {
                 return true;
@@ -138,16 +126,16 @@ public class DoubleList implements List {
     /**
      * 链接新节点
      *
-     * @param p       前一个节点
-     * @param newNode 新节点
+     * @param p           前一个节点
+     * @param newListNode 新节点
      */
-    private void link(Node p, Node newNode) {
-        newNode.prev = p;
-        newNode.next = p.next;
+    private void link(ListNode p, ListNode newListNode) {
+        newListNode.prev = p;
+        newListNode.next = p.next;
         if (p.next != null) {
-            p.next.prev = newNode;
+            p.next.prev = newListNode;
         }
-        p.next = newNode;
+        p.next = newListNode;
     }
 
     /**
@@ -155,7 +143,7 @@ public class DoubleList implements List {
      *
      * @param p 上一个节点
      */
-    private void unlink(Node p) {
+    private void unlink(ListNode p) {
         p.next = p.next.next;
         if (p.next != null) {
             p.next.prev = p;

@@ -61,6 +61,41 @@ public class Node {
         return values != null ? Arrays.asList(values) : null;
     }
 
+    /**
+     * 树的序列化字符串输出
+     *
+     * @param tree 根节点
+     * @return 序列化字符串
+     */
+    public static String toString(Node tree) {
+        return toString(tree, null);
+    }
+
+    /**
+     * 树的序列化字符串输出
+     *
+     * @param tree    根节点
+     * @param nullStr null 的字符串表示
+     * @return 序列化字符串
+     */
+    public static String toString(Node tree, String nullStr) {
+        Integer[] values = new GenericTreeSerializer().serialize(tree);
+        if (values == null) {
+            return "";
+        }
+
+        int n = values.length;
+        String[] strings = new String[n];
+        for (int i = 0; i < n; i++) {
+            if (values[i] == null) {
+                strings[i] = nullStr;
+            } else {
+                strings[i] = String.valueOf(values[i]);
+            }
+        }
+        return Arrays.toString(strings);
+    }
+
     @Override
     public String toString() {
         return String.valueOf(val);
