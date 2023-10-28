@@ -69,6 +69,7 @@
 
 ### 5.1 结构（Structure）
 
+- [二叉树（Binary Tree）](./structure/src/main/java/com/wjd/structure/tree/binary/BinaryTreeImpl.java)
 - [二叉搜索树（Binary Search Tree，BST）](./structure/src/main/java/com/wjd/structure/tree/bst/BSTreeImpl.java)
 - 平衡二叉搜索树（Balanced Binary Search Tree）
   - [平衡二叉树（AVL）](./structure/src/main/java/com/wjd/structure/tree/avl/AVLTreeImpl.java)
