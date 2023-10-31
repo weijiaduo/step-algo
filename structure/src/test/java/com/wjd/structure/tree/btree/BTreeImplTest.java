@@ -1,6 +1,6 @@
 package com.wjd.structure.tree.btree;
 
-import com.wjd.util.IOUtils;
+import com.wjd.util.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
@@ -205,7 +205,7 @@ class BTreeImplTest {
      * @return 二维列表
      */
     private List<List<Integer>> toListList(String s) {
-        Integer[][] matrix = IOUtils.toBoxIntMatrix(s);
+        Integer[][] matrix = StringUtils.toBoxIntMatrix(s);
         List<List<Integer>> values = new ArrayList<>();
         for (Integer[] arr : matrix) {
             if (arr == null) {

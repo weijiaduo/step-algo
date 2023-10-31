@@ -62,4 +62,39 @@ public final class StringUtils {
         return sb.toString();
     }
 
+    public static Integer[][] toBoxIntMatrix(String line) {
+        String[] tokens = line.split("],");
+        int m = tokens.length;
+        Integer[][] arr = new Integer[m][];
+        for (int i = 0; i < m; i++) {
+            arr[i] = toBoxIntArray(tokens[i]);
+        }
+        return arr;
+    }
+
+    public static Integer[] toBoxIntArray(String line) {
+        if (line.contains("[")) {
+            line = line.replaceAll("[\\[\\]]", "");
+        }
+        if (line.isEmpty()) {
+            return new Integer[0];
+        }
+
+        String[] tokens = line.split(",");
+        int n = tokens.length;
+        Integer[] arr = new Integer[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = toInt(tokens[i]);
+        }
+        return arr;
+    }
+
+    public static Integer toInt(String line) {
+        try {
+            return Integer.parseInt(line.trim());
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }
