@@ -14,11 +14,11 @@ public class MapUnionFind {
     /**
      * 父节点存储
      */
-    private Map<Integer, Integer> parent;
+    private final Map<Integer, Integer> parent;
     /**
      * 节点深度
      */
-    private Map<Integer, Integer> rank;
+    private final Map<Integer, Integer> rank;
 
     public MapUnionFind(int[] nums) {
         parent = new HashMap<>();

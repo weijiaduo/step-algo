@@ -209,9 +209,9 @@
 
 ### 9.1 排序（Sort）
 
-- [低位优先排序（LSD）](algorithm/src/main/java/com/wjd/algorithm/strings/sorts/impl/LSD.java)
-- [高位优先排序（MSD）](algorithm/src/main/java/com/wjd/algorithm/strings/sorts/impl/MSD.java)
-- [三向快速排序](algorithm/src/main/java/com/wjd/algorithm/strings/sorts/impl/Quick3Way.java)
+- [低位优先排序（LSD）](algorithm/src/main/java/com/wjd/algorithm/strings/sorts/LSD.java)
+- [高位优先排序（MSD）](algorithm/src/main/java/com/wjd/algorithm/strings/sorts/MSD.java)
+- [三向快速排序](algorithm/src/main/java/com/wjd/algorithm/strings/sorts/Quick3Way.java)
 
 ### 9.2 单词查找树（Trie）
 
@@ -222,18 +222,18 @@
 
 ### 9.3 匹配（Pattern Match）
 
-- [Brute-Force, BF](algorithm/src/main/java/com/wjd/algorithm/strings/search/impl/BruteForceSearch.java)
-- [Rabin-Karp, RK](algorithm/src/main/java/com/wjd/algorithm/strings/search/impl/RabinKarpSearch.java)
-- [Boyer-Moore, BM](algorithm/src/main/java/com/wjd/algorithm/strings/search/impl/BoyerMooreSearch.java)
+- [Brute-Force, BF](algorithm/src/main/java/com/wjd/algorithm/strings/search/BruteForceSearch.java)
+- [Rabin-Karp, RK](algorithm/src/main/java/com/wjd/algorithm/strings/search/RabinKarpSearch.java)
+- [Boyer-Moore, BM](algorithm/src/main/java/com/wjd/algorithm/strings/search/BoyerMooreSearch.java)
 - [Knuth-Morris-Pratt, KMP]
-  - [KMP-Pmt](algorithm/src/main/java/com/wjd/algorithm/strings/search/impl/PmtKMPSearch.java)
-  - [KMP-Next](algorithm/src/main/java/com/wjd/algorithm/strings/search/impl/NextKMPSearch.java)
-  - [KMP-DFA](algorithm/src/main/java/com/wjd/algorithm/strings/search/impl/DFAKMPSearch.java)
-- [AC 自动机](algorithm/src/main/java/com/wjd/algorithm/strings/regex/impl/AhoCorasickPattern.java)
+  - [KMP-Pmt](algorithm/src/main/java/com/wjd/algorithm/strings/search/PmtKMPSearch.java)
+  - [KMP-Next](algorithm/src/main/java/com/wjd/algorithm/strings/search/NextKMPSearch.java)
+  - [KMP-DFA](algorithm/src/main/java/com/wjd/algorithm/strings/search/DFAKMPSearch.java)
+- [AC 自动机](algorithm/src/main/java/com/wjd/algorithm/strings/regex/AhoCorasickPattern.java)
 
 ### 9.4 正则表达式（Regex）
 
-- [NFA](algorithm/src/main/java/com/wjd/algorithm/strings/regex/impl/NFAPattern.java)
+- [NFA](algorithm/src/main/java/com/wjd/algorithm/strings/regex/NFAPattern.java)
 
 ## 十、其他（Other）
 

@@ -1,6 +1,4 @@
-package com.wjd.algorithm.strings.regex.impl;
-
-import com.wjd.algorithm.strings.regex.Pattern;
+package com.wjd.algorithm.strings.regex;
 
 import java.util.*;
 

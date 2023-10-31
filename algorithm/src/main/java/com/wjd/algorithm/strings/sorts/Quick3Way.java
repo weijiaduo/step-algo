@@ -1,6 +1,4 @@
-package com.wjd.algorithm.strings.sorts.impl;
-
-import com.wjd.algorithm.strings.sorts.Sort;
+package com.wjd.algorithm.strings.sorts;
 
 /**
  * 三向快速排序

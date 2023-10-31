@@ -11,11 +11,11 @@ public class ArrayUnionFind {
     /**
      * 父节点存储
      */
-    private int[] parent;
+    private final int[] parent;
     /**
      * 节点深度
      */
-    private int[] rank;
+    private final int[] rank;
 
     public ArrayUnionFind(int n) {
         parent = new int[n];

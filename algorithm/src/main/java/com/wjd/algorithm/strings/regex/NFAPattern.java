@@ -1,8 +1,7 @@
-package com.wjd.algorithm.strings.regex.impl;
+package com.wjd.algorithm.strings.regex;
 
 import com.wjd.algorithm.graph.Search;
 import com.wjd.algorithm.graph.directed.search.DirectedDFS;
-import com.wjd.algorithm.strings.regex.Pattern;
 import com.wjd.structure.graph.directed.Digraph;
 import com.wjd.structure.graph.directed.impl.ListDigraph;
 

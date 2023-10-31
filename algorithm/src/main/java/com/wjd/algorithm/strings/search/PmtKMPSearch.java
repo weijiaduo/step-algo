@@ -1,6 +1,4 @@
-package com.wjd.algorithm.strings.search.impl;
-
-import com.wjd.algorithm.strings.search.Search;
+package com.wjd.algorithm.strings.search;
 
 /**
  * KMP(Partial Match Table) 算法

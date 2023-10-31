@@ -1,6 +1,7 @@
 package com.wjd.algorithm.strings.sorts.impl;
 
 import com.wjd.algorithm.strings.reader.FileStringsReader;
+import com.wjd.algorithm.strings.sorts.LSD;
 import com.wjd.algorithm.strings.sorts.Sort;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,6 @@
 package com.wjd.algorithm.strings.regex.impl;
 
+import com.wjd.algorithm.strings.regex.AhoCorasickPattern;
 import com.wjd.algorithm.strings.regex.Pattern;
 import org.junit.jupiter.api.Test;
 

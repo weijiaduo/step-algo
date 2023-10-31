@@ -1,6 +1,4 @@
-package com.wjd.algorithm.strings.sorts.impl;
-
-import com.wjd.algorithm.strings.sorts.Sort;
+package com.wjd.algorithm.strings.sorts;
 
 /**
  * 高位优先排序

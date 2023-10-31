@@ -1,5 +1,6 @@
 package com.wjd.algorithm.strings.search.impl;
 
+import com.wjd.algorithm.strings.search.BoyerMooreSearch;
 import com.wjd.algorithm.strings.search.Search;
 import org.junit.jupiter.api.Test;
 
