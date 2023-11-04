@@ -1,6 +1,6 @@
 package com.wjd.algorithm.strings.sorts.impl;
 
-import com.wjd.algorithm.strings.reader.FileStringsReader;
+import com.wjd.algorithm.strings.utils.FileStringsReader;
 import com.wjd.algorithm.strings.sorts.MSD;
 import com.wjd.algorithm.strings.sorts.Sort;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ class MSDTest {
 
     @Test
     void sortEquals() {
-        String[] strings = new FileStringsReader("words3.txt").read();
+        String[] strings = new FileStringsReader(MSD.class, "words3.txt").read();
         String[] expect = Arrays.copyOf(strings, strings.length);
         Arrays.sort(expect);
         System.out.println(Arrays.toString(strings));
@@ -26,7 +26,7 @@ class MSDTest {
 
     @Test
     void sortDiff() {
-        String[] strings = new FileStringsReader("shells.txt").read();
+        String[] strings = new FileStringsReader(MSD.class, "shells.txt").read();
         String[] expect = Arrays.copyOf(strings, strings.length);
         Arrays.sort(expect);
         System.out.println(Arrays.toString(strings));

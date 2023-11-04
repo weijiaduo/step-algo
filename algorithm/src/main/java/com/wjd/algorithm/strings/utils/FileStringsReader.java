@@ -1,4 +1,4 @@
-package com.wjd.algorithm.strings.reader;
+package com.wjd.algorithm.strings.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -19,18 +19,20 @@ public class FileStringsReader {
     /**
      * 文件目录
      */
-    private static final String DIR = Objects.requireNonNull(FileStringsReader.class.getResource("")).getPath();
+    private final String dir;
     /**
      * 文件名称
      */
     private final String fileName;
 
-    public FileStringsReader(String fileName) {
+    public FileStringsReader(Class<?> clazz, String fileName) {
+        dir = Objects.requireNonNull(clazz.getResource("")).getPath();
         this.fileName = fileName;
     }
 
     public String[] read() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File(DIR, fileName)))) {
+        try (FileReader fr = new FileReader(new File(dir, fileName));
+             BufferedReader reader = new BufferedReader(fr)) {
             List<String> list = new ArrayList<>();
             String line = reader.readLine();
             while (line != null) {
