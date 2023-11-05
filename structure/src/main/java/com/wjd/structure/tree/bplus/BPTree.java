@@ -6,7 +6,7 @@ package com.wjd.structure.tree.bplus;
  * @author weijiaduo
  * @since 2023/1/9
  */
-public interface BPTree<K extends Comparable<K>, V>  {
+public interface BPTree<K extends Comparable<K>, V> {
 
     /**
      * 查找指定 key 的值
@@ -30,5 +30,12 @@ public interface BPTree<K extends Comparable<K>, V>  {
      * @param key key
      */
     void remove(K key);
+
+    /**
+     * 迭代器
+     *
+     * @return 迭代器
+     */
+    BPListIterator<K, V> iterator();
 
 }

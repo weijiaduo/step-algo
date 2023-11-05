@@ -2,13 +2,13 @@ package com.wjd.structure.tree.bplus;
 
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class BPTreeImplTest {
 
@@ -447,7 +447,7 @@ class BPTreeImplTest {
      * 验证叶子节点的双向链表
      */
     @Test
-    void testLeafKeys() throws Exception {
+    void testLeafKeys() {
         int m = 6;
         BPTree<Integer, Integer> bptree = new BPTreeImpl<>(m);
         bptree.put(10, 10);
@@ -473,18 +473,11 @@ class BPTreeImplTest {
         bptree.put(3, 3);
         assertEquals("[[48], [10, 14, 30], [55, 64], [2, 3, 9], [10, 11, 12], [14, 23, 25], [30, 33, 37], [48, 50, 52], [55, 59, 61], [64, 71, 72]]", bptree.toString());
 
-        BPTNode<Integer, Integer> min = getRoot(bptree);
-        while (min != null && !min.isLeaf()) {
-            min = min.getChild(0);
-        }
-        assertTrue(min instanceof BPTLeaf);
-
         List<Integer> expect = Arrays.asList(2, 3, 9, 10, 11, 12, 14, 23, 25, 30, 33, 37, 48, 50, 52, 55, 59, 61, 64, 71, 72);
         List<Integer> actual = new ArrayList<>();
-        BPTLeaf<Integer, Integer> p = (BPTLeaf<Integer, Integer>) min;
-        while (p != null) {
-            actual.addAll(p.keys());
-            p = p.getNext();
+        BPListIterator<Integer, Integer> it = bptree.iterator();
+        while (it.hasNext()) {
+            actual.add(it.next().getKey());
         }
         assertEquals(expect.toString(), actual.toString());
     }
@@ -493,7 +486,7 @@ class BPTreeImplTest {
      * 验证叶子节点的双向链表
      */
     @Test
-    void testLeafReverseKeys() throws Exception {
+    void testLeafReverseKeys() {
         int m = 6;
         BPTree<Integer, Integer> bptree = new BPTreeImpl<>(m);
         bptree.put(10, 10);
@@ -519,39 +512,17 @@ class BPTreeImplTest {
         bptree.put(3, 3);
         assertEquals("[[48], [10, 14, 30], [55, 64], [2, 3, 9], [10, 11, 12], [14, 23, 25], [30, 33, 37], [48, 50, 52], [55, 59, 61], [64, 71, 72]]", bptree.toString());
 
-        BPTNode<Integer, Integer> max = getRoot(bptree);
-        while (max != null && !max.isLeaf()) {
-            max = max.getChild(max.size);
-        }
-        assertTrue(max instanceof BPTLeaf);
-
         List<Integer> expect = Arrays.asList(2, 3, 9, 10, 11, 12, 14, 23, 25, 30, 33, 37, 48, 50, 52, 55, 59, 61, 64, 71, 72);
         Collections.reverse(expect);
         List<Integer> actual = new ArrayList<>();
-        BPTLeaf<Integer, Integer> p = (BPTLeaf<Integer, Integer>) max;
-        while (p != null) {
-            List<Integer> keys = p.keys();
-            for (int i = keys.size() - 1; i >= 0; i--) {
-                actual.add(keys.get(i));
-            }
-            p = p.getPrev();
+        BPListIterator<Integer, Integer> it = bptree.iterator();
+        while (it.hasNext()) {
+            it.next();
+        }
+        while (it.hasPrev()) {
+            actual.add(it.prev().getKey());
         }
         assertEquals(expect.toString(), actual.toString());
     }
 
-    /**
-     * 获取根节点
-     *
-     * @param bptree B+树
-     * @return 根节点
-     * @throws Exception 异常
-     */
-    @SuppressWarnings("unchecked")
-    private BPTNode<Integer, Integer> getRoot(BPTree<Integer, Integer> bptree) throws Exception {
-        Field rootField = BPTreeImpl.class.getDeclaredField("root");
-        rootField.setAccessible(true);
-        BPTNode<Integer, Integer> root = (BPTNode<Integer, Integer>) rootField.get(bptree);
-        rootField.setAccessible(false);
-        return root;
-    }
 }

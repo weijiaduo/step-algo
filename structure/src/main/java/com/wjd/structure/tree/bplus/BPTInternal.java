@@ -248,11 +248,11 @@ public class BPTInternal<K extends Comparable<K>, V> extends BPTNode<K, V> {
         if (left.isLeaf()) {
             BPTLeaf<K, V> leftLeaf = (BPTLeaf<K, V>) left;
             BPTLeaf<K, V> rightLeaf = (BPTLeaf<K, V>) right;
-            BPTLeaf<K, V> rightNext = rightLeaf.getNext();
+            BPTLeaf<K, V> rightNext = rightLeaf.next;
             if (rightNext != null) {
-                rightNext.setPrev(leftLeaf);
+                rightNext.prev = leftLeaf;
             }
-            leftLeaf.setNext(rightNext);
+            leftLeaf.next = rightNext;
         }
         return this;
     }

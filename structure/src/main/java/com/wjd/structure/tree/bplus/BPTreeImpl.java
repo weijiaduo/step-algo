@@ -1,5 +1,8 @@
 package com.wjd.structure.tree.bplus;
 
+import java.util.Map;
+import java.util.NoSuchElementException;
+
 /**
  * B+ 树实现类
  *
@@ -140,6 +143,140 @@ public class BPTreeImpl<K extends Comparable<K>, V> implements BPTree<K, V> {
             // 移除后可能需要父节点下溢
             return node.underflow(index);
         }
+    }
+
+    @Override
+    public BPListIterator<K, V> iterator() {
+        return new BPLtr();
+    }
+
+    final class BPLtr implements BPListIterator<K, V> {
+
+        /**
+         * 头节点
+         */
+        private final BPTLeaf<K, V> head;
+        /**
+         * 上一个访问的节点，往前移动时 prev = null
+         */
+        private BPTLeaf<K, V> prev;
+        /**
+         * 下一个访问的节点
+         */
+        private BPTLeaf<K, V> next;
+        /**
+         * 下一个元素索引，从 1 开始
+         */
+        private int nextIndex;
+
+        BPLtr() {
+            BPTNode<K, V> min = root;
+            while (min != null && !min.isLeaf()) {
+                min = min.getChild(0);
+            }
+            if (min instanceof BPTLeaf<K, V>) {
+                head = (BPTLeaf<K, V>) min;
+            } else {
+                throw new IllegalStateException("Not found head node!");
+            }
+
+            // 表头前面：cur == null && prev == null
+            // 表尾后面：cur == null && prev != null
+            next = prev = null;
+            nextIndex = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return next != null || prev == null;
+        }
+
+        @Override
+        public Map.Entry<K, V> next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+
+            // 初始化为头节点
+            if (next == null) {
+                next = head;
+                nextIndex = 1;
+            }
+            Node<K, V> node = new Node<>(next.getKey(nextIndex), next.getValue(nextIndex));
+            // 到下一个节点
+            if (++nextIndex > next.size()) {
+                prev = next;
+                next = next.next;
+                nextIndex = 1;
+            }
+            return node;
+        }
+
+        @Override
+        public boolean hasPrev() {
+            BPTLeaf<K, V> p;
+            if (next != null) {
+                p = nextIndex != 1 ? next : next.prev;
+            } else {
+                p = prev;
+            }
+            return p != null;
+        }
+
+        @Override
+        public Map.Entry<K, V> prev() {
+            if (!hasPrev()) {
+                throw new NoSuchElementException();
+            }
+
+            BPTLeaf<K, V> cur;
+            int index;
+            if (next != null) {
+                if (nextIndex != 1) {
+                    cur = next;
+                    index = nextIndex - 1;
+                } else {
+                    cur = next.prev;
+                    index = cur.size;
+                }
+            } else {
+                cur = prev;
+                index = cur.size;
+            }
+            // 更新节点
+            prev = cur != next ? null : prev;
+            next = cur;
+            nextIndex = index;
+            return new Node<>(cur.getKey(index), cur.getValue(index));
+        }
+
+    }
+
+    final static class Node<K, V> implements Map.Entry<K, V> {
+
+        private final K key;
+        private V value;
+
+        public Node(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        @Override
+        public K getKey() {
+            return key;
+        }
+
+        @Override
+        public V getValue() {
+            return value;
+        }
+
+        @Override
+        public V setValue(V value) {
+            return this.value = value;
+        }
+
     }
 
     @Override

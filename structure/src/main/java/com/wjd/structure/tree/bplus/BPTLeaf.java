@@ -13,11 +13,11 @@ public class BPTLeaf<K extends Comparable<K>, V> extends BPTNode<K, V> {
     /**
      * 双向链表，上一个节点
      */
-    private BPTLeaf<K, V> prev;
+    BPTLeaf<K, V> prev;
     /**
      * 双向链表，下一个节点
      */
-    private BPTLeaf<K, V> next;
+    BPTLeaf<K, V> next;
 
     public BPTLeaf(int m) {
         super(m);
@@ -126,38 +126,6 @@ public class BPTLeaf<K extends Comparable<K>, V> extends BPTNode<K, V> {
      */
     public void setValue(int index, V value) {
         getEntry(index).value = value;
-    }
-
-    /**
-     * @return 上一个叶子节点
-     */
-    public BPTLeaf<K, V> getPrev() {
-        return prev;
-    }
-
-    /**
-     * @return 下一个叶子节点
-     */
-    public BPTLeaf<K, V> getNext() {
-        return next;
-    }
-
-    /**
-     * 更新上一个叶子节点
-     *
-     * @param prev 上一个叶子节点
-     */
-    protected void setPrev(BPTLeaf<K, V> prev) {
-        this.prev = prev;
-    }
-
-    /**
-     * 更新下一个叶子节点
-     *
-     * @param next 下一个叶子节点
-     */
-    protected void setNext(BPTLeaf<K, V> next) {
-        this.next = next;
     }
 
 }
