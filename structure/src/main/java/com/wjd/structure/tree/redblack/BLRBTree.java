@@ -70,19 +70,19 @@ public class BLRBTree implements RBTree {
     /**
      * 插入新节点
      *
-     * @param h       当前节点
-     * @param newNode 新节点
+     * @param h    当前节点
+     * @param node 新节点
      * @return 新当前节点
      */
-    private RBTNode insertNode(RBTNode h, RBTNode newNode) {
+    private RBTNode insertNode(RBTNode h, RBTNode node) {
         if (h == null) {
-            return newNode;
+            return node;
         }
-        if (newNode.val < h.val) {
-            h.left = insertNode(h.left, newNode);
+        if (node.val < h.val) {
+            h.left = insertNode(h.left, node);
             h.left.parent = h;
         } else {
-            h.right = insertNode(h.right, newNode);
+            h.right = insertNode(h.right, node);
             h.right.parent = h;
         }
         return h;
@@ -134,8 +134,8 @@ public class BLRBTree implements RBTree {
             return;
         }
 
-        // 替换节点（后继/前继）
-        h = swapReplacer(h);
+        // 交换节点
+        swapNode(h, findReplacer(h));
         // 先调整树结构
         balanceDeletion(h);
         // 真正删除节点
@@ -146,17 +146,17 @@ public class BLRBTree implements RBTree {
     }
 
     /**
-     * 交换当前节点到后继/前继节点
+     * 寻找可替换节点（前继/后继）
      *
      * @param h 当前节点
-     * @return 替换节点
+     * @return 可替换节点
      */
-    private RBTNode swapReplacer(RBTNode h) {
-        // 寻找交换节点
+    private RBTNode findReplacer(RBTNode h) {
         if (h == null) {
             return null;
         }
-        RBTNode r;
+        // 寻找交换节点
+        RBTNode r = h;
         if (h.right != null) {
             // 右边最小值，即后继值
             r = h.right;
@@ -169,17 +169,24 @@ public class BLRBTree implements RBTree {
             while (r.right != null) {
                 r = r.right;
             }
-        } else {
-            // 叶子节点
-            return h;
         }
-
-        // 交换两个节点
-        RBTNode t = new RBTNode(-1);
-        replaceNode(h, t);
-        replaceNode(r, h);
-        replaceNode(t, r);
         return r;
+    }
+
+    /**
+     * 交换两个节点的位置
+     *
+     * @param i 节点
+     * @param j 节点
+     */
+    private void swapNode(RBTNode i, RBTNode j) {
+        if (i == j) {
+            return;
+        }
+        RBTNode t = new RBTNode(-1);
+        replaceNode(i, t);
+        replaceNode(j, i);
+        replaceNode(t, j);
     }
 
     /**
