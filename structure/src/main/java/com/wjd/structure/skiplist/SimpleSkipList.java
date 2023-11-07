@@ -88,14 +88,14 @@ public class SimpleSkipList {
      * @param value 新值
      */
     public void add(int value) {
-        Node[] processors = findProcessors(value);
+        Node[] path = findPath(value);
         int lv = randomLevel();
         levels = Math.max(levels, lv);
         Node newNode = new Node(value, levels);
         for (int i = 0; i < lv; i++) {
-            Node processor = processors[i];
-            newNode.forwards[i] = processor.forwards[i];
-            processor.forwards[i] = newNode;
+            Node node = path[i];
+            newNode.forwards[i] = node.forwards[i];
+            node.forwards[i] = newNode;
         }
     }
 
@@ -106,20 +106,20 @@ public class SimpleSkipList {
      * @return true删除成功/false删除失败
      */
     public boolean erase(int value) {
-        Node[] processors = findProcessors(value);
-        Node target = processors[0].forwards[0];
+        Node[] path = findPath(value);
+        Node target = path[0].forwards[0];
         if (target == null || value != target.value) {
             return false;
         }
 
         // 从下往上，逐层删除指定节点
         for (int i = 0; i < levels; i++) {
-            Node processor = processors[i];
-            Node delNode = processor.forwards[i];
+            Node node = path[i];
+            Node delNode = node.forwards[i];
             if (delNode == null || delNode != target) {
                 break;
             }
-            processor.forwards[i] = delNode.forwards[i];
+            node.forwards[i] = delNode.forwards[i];
         }
 
         // 降低层级，最顶层只有头节点时
@@ -138,7 +138,7 @@ public class SimpleSkipList {
      * @param value 指定值
      * @return 前置路径
      */
-    private Node[] findProcessors(int value) {
+    private Node[] findPath(int value) {
         Node[] path = new Node[maxLevels];
         Arrays.fill(path, head);
         Node p = head;
@@ -185,4 +185,5 @@ public class SimpleSkipList {
         }
         return sb.toString();
     }
+
 }

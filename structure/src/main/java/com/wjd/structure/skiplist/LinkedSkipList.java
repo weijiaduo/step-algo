@@ -72,17 +72,17 @@ public class LinkedSkipList<T extends Comparable<T>> implements SkipList<T> {
 
     @Override
     public void add(T value) {
-        List<Node> processors = findProcessors(value);
-        int levels = processors.size();
+        List<Node> path = findPath(value);
+        int levels = path.size();
 
         Node newNode = null;
         boolean insertUp = true;
         for (int i = 0; i < levels && insertUp; i++) {
-            Node processor = processors.get(i);
+            Node node = path.get(i);
             // 新节点指向下一层的同值节点
-            newNode = new Node(value, processor.right, newNode);
+            newNode = new Node(value, node.right, newNode);
             // 在当前层插入新节点
-            processor.right = newNode;
+            node.right = newNode;
 
             // 是否要继续往上一层插入节点
             insertUp = random.nextDouble() < FACTOR;
@@ -96,22 +96,22 @@ public class LinkedSkipList<T extends Comparable<T>> implements SkipList<T> {
 
     @Override
     public boolean erase(T value) {
-        List<Node> processors = findProcessors(value);
+        List<Node> path = findPath(value);
 
         // 验证删除节点是否存在，没有找到则直接返回
-        Node target = processors.get(0).right;
+        Node target = path.get(0).right;
         if (target == null || !value.equals(target.value)) {
             return false;
         }
 
         // 从下往上，逐层删除指定节点
-        for (Node processor : processors) {
+        for (Node node : path) {
             // 指定 value 值的节点在每一层都删完了，就跳出循环
-            Node delNode = processor.right;
+            Node delNode = node.right;
             if (delNode == null || !delNode.value.equals(value)) {
                 break;
             }
-            processor.right = delNode.right;
+            node.right = delNode.right;
         }
 
         // 更新层级
@@ -149,7 +149,7 @@ public class LinkedSkipList<T extends Comparable<T>> implements SkipList<T> {
      * @param value 指定值
      * @return 前置路径
      */
-    private List<Node> findProcessors(T value) {
+    private List<Node> findPath(T value) {
         Deque<Node> stack = new ArrayDeque<>();
         Node p = head;
         // 从上往下一直找，直到最底层的原始链表为止
@@ -188,4 +188,5 @@ public class LinkedSkipList<T extends Comparable<T>> implements SkipList<T> {
         }
         return sb.toString();
     }
+
 }

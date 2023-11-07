@@ -87,14 +87,14 @@ public class ArraySkipList<T extends Comparable<T>> implements SkipList<T> {
      */
     @Override
     public void add(T value) {
-        List<Node> processors = findProcessors(value);
+        List<Node> path = findPath(value);
         int lv = randomLevel();
         levels = Math.max(levels, lv);
         Node newNode = new Node(value, levels);
         for (int i = 0; i < lv; i++) {
-            Node processor = processors.get(i);
-            newNode.forwards.set(i, processor.forwards.get(i));
-            processor.forwards.set(i, newNode);
+            Node node = path.get(i);
+            newNode.forwards.set(i, node.forwards.get(i));
+            node.forwards.set(i, newNode);
         }
     }
 
@@ -103,20 +103,20 @@ public class ArraySkipList<T extends Comparable<T>> implements SkipList<T> {
      */
     @Override
     public boolean erase(T value) {
-        List<Node> processors = findProcessors(value);
-        Node target = processors.get(0).forwards.get(0);
+        List<Node> path = findPath(value);
+        Node target = path.get(0).forwards.get(0);
         if (target == null || !value.equals(target.value)) {
             return false;
         }
 
         // 从下往上，逐层删除指定节点
         for (int i = 0; i < levels; i++) {
-            Node processor = processors.get(i);
-            Node delNode = processor.forwards.get(i);
+            Node node = path.get(i);
+            Node delNode = node.forwards.get(i);
             if (delNode == null || delNode != target) {
                 break;
             }
-            processor.forwards.set(i, delNode.forwards.get(i));
+            node.forwards.set(i, delNode.forwards.get(i));
         }
 
         // 降低层级，最顶层只有头节点时
@@ -135,7 +135,7 @@ public class ArraySkipList<T extends Comparable<T>> implements SkipList<T> {
      * @param value 指定值
      * @return 前置路径
      */
-    private List<Node> findProcessors(T value) {
+    private List<Node> findPath(T value) {
         List<Node> path = new ArrayList<>(maxLevels);
         for (int i = 0; i < maxLevels; i++) {
             path.add(head);
@@ -184,4 +184,5 @@ public class ArraySkipList<T extends Comparable<T>> implements SkipList<T> {
         }
         return sb.toString();
     }
+
 }
