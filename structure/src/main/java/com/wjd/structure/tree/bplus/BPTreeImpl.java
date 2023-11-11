@@ -180,8 +180,8 @@ public class BPTreeImpl<K extends Comparable<K>, V> implements BPTree<K, V> {
                 throw new IllegalStateException("Not found head node!");
             }
 
-            // 表头前面：cur == null && prev == null
-            // 表尾后面：cur == null && prev != null
+            // 表头前面：next == null && prev == null
+            // 表尾后面：next == null && prev != null
             next = prev = null;
             nextIndex = 0;
         }
@@ -203,7 +203,7 @@ public class BPTreeImpl<K extends Comparable<K>, V> implements BPTree<K, V> {
                 nextIndex = 1;
             }
             Node<K, V> node = new Node<>(next.getKey(nextIndex), next.getValue(nextIndex));
-            // 到下一个节点
+            // 当前节点遍历完了，到下一个节点
             if (++nextIndex > next.size()) {
                 prev = next;
                 next = next.next;
@@ -244,7 +244,7 @@ public class BPTreeImpl<K extends Comparable<K>, V> implements BPTree<K, V> {
                 index = cur.size;
             }
             // 更新节点
-            prev = cur != next ? null : prev;
+            prev = null;
             next = cur;
             nextIndex = index;
             return new Node<>(cur.getKey(index), cur.getValue(index));
