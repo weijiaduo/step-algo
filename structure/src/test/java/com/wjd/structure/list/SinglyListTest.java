@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SingleListTest {
+class SinglyListTest {
 
     @Test
     void get() {
-        List list = new SingleList();
+        List list = new SinglyList();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -17,7 +17,7 @@ class SingleListTest {
 
     @Test
     void add() {
-        List list = new SingleList();
+        List list = new SinglyList();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -28,7 +28,7 @@ class SingleListTest {
 
     @Test
     void insert() {
-        List list = new SingleList();
+        List list = new SinglyList();
         list.insert(0, 1);
         list.insert(0, 2);
         list.insert(1, 3);
@@ -39,7 +39,7 @@ class SingleListTest {
 
     @Test
     void remove() {
-        List list = new SingleList();
+        List list = new SinglyList();
         list.insert(0, 1);
         list.insert(0, 2);
         list.insert(0, 3);
@@ -49,7 +49,7 @@ class SingleListTest {
 
     @Test
     void contains() {
-        List list = new SingleList();
+        List list = new SinglyList();
         list.add(1);
         assertFalse(list.contains(2));
         list.add(2);
@@ -60,7 +60,7 @@ class SingleListTest {
 
     @Test
     void size() {
-        List list = new SingleList();
+        List list = new SinglyList();
         list.add(1);
         assertEquals(1, list.size());
         list.add(2);
@@ -72,7 +72,7 @@ class SingleListTest {
 
     @Test
     void tempTest() {
-        List list = new SingleList();
+        List list = new SinglyList();
         list.insert(0, 7);
         list.insert(0, 2);
         list.insert(0, 1);

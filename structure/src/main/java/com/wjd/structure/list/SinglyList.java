@@ -1,12 +1,12 @@
 package com.wjd.structure.list;
 
 /**
- * 双向链表
+ * 单向链表
  *
  * @author weijiaduo
  * @since 2022/8/20
  */
-public class DoubleList implements List {
+public class SinglyList implements List {
 
     /**
      * 哨兵头节点
@@ -21,7 +21,7 @@ public class DoubleList implements List {
      */
     private int size;
 
-    public DoubleList() {
+    public SinglyList() {
         head = new ListNode(-1);
         tail = head;
         size = 0;
@@ -96,6 +96,11 @@ public class DoubleList implements List {
         return false;
     }
 
+    /**
+     * 链表大小
+     *
+     * @return 链表大小
+     */
     @Override
     public int size() {
         return size;
@@ -130,11 +135,7 @@ public class DoubleList implements List {
      * @param newListNode 新节点
      */
     private void link(ListNode p, ListNode newListNode) {
-        newListNode.prev = p;
         newListNode.next = p.next;
-        if (p.next != null) {
-            p.next.prev = newListNode;
-        }
         p.next = newListNode;
     }
 
@@ -145,9 +146,6 @@ public class DoubleList implements List {
      */
     private void unlink(ListNode p) {
         p.next = p.next.next;
-        if (p.next != null) {
-            p.next.prev = p;
-        }
     }
 
 }

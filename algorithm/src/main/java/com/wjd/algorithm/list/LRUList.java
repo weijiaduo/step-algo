@@ -13,7 +13,7 @@ import java.util.Map;
  * @author weijiaduo
  * @since 2022/6/29
  */
-public class LRUCache {
+public class LRUList {
 
     static class Node {
         int key;
@@ -37,7 +37,7 @@ public class LRUCache {
      * 执行耗时:41 ms,击败了84.68% 的Java用户
      * 内存消耗:108.6 MB,击败了56.40% 的Java用户
      */
-    public LRUCache(int capacity) {
+    public LRUList(int capacity) {
         this.capacity = capacity;
     }
 
