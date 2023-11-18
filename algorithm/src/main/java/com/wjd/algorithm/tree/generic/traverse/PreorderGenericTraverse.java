@@ -1,9 +1,9 @@
 package com.wjd.algorithm.tree.generic.traverse;
 
-import com.wjd.algorithm.tree.ListVisitor;
 import com.wjd.structure.tree.generic.Node;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class PreorderGenericTraverse implements GenericTraverse {
     /**
      * 列表访问者
      */
-    private ListVisitor<Node> visitor;
+    private List<Node> list;
 
     /**
      * 遍历实现类型：
@@ -34,7 +34,7 @@ public class PreorderGenericTraverse implements GenericTraverse {
 
     @Override
     public List<Node> traverse(Node root) {
-        visitor = new ListVisitor<>();
+        list = new ArrayList<>();
         if (type == 3) {
             mark(root);
         } else if (type == 2) {
@@ -42,8 +42,6 @@ public class PreorderGenericTraverse implements GenericTraverse {
         } else {
             recursive(root);
         }
-        List<Node> list = visitor.getList();
-        visitor = null;
         return list;
     }
 
@@ -57,7 +55,7 @@ public class PreorderGenericTraverse implements GenericTraverse {
             return;
         }
 
-        visitor.visit(root);
+        list.add(root);
         if (root.children != null) {
             for (Node child : root.children) {
                 recursive(child);
@@ -79,7 +77,7 @@ public class PreorderGenericTraverse implements GenericTraverse {
         stack.add(root);
         while (!stack.isEmpty()) {
             Node node = stack.pop();
-            visitor.visit(node);
+            list.add(node);
             List<Node> children = node.children;
             if (children != null && !children.isEmpty()) {
                 for (int i = children.size() - 1; i >= 0; i--) {
@@ -103,7 +101,7 @@ public class PreorderGenericTraverse implements GenericTraverse {
             Node node = stack.pop();
             Boolean mark = marks.pop();
             if (mark) {
-                visitor.visit(node);
+                list.add(node);
             } else {
                 // 倒序添加
                 List<Node> children = node.children;

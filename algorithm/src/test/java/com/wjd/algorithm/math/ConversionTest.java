@@ -42,8 +42,8 @@ class ConversionTest {
     @Test
     void toDoubleBinaryStr() {
         Conversion conversion = new Conversion();
-        double[] vals = new double[] {0.625, 0.1, 2.625};
-        String[] expects = new String[] {"0.101", "0.00011001100110011001100110011001", "10.101"};
+        double[] vals = new double[]{0.625, 0.1, 2.625};
+        String[] expects = new String[]{"0.101", "0.00011001100110011001100110011001", "10.101"};
         for (int i = 0; i < vals.length; i++) {
             String actual = conversion.toBinaryStr(vals[i]);
             assertEquals(expects[i], actual);

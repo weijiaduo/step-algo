@@ -2,7 +2,7 @@ package com.wjd.algorithm.binary;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LastEqualSearchTest {
 

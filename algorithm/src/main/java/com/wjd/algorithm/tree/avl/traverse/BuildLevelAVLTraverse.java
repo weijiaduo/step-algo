@@ -1,8 +1,8 @@
 package com.wjd.algorithm.tree.avl.traverse;
 
-import com.wjd.algorithm.tree.ListVisitor;
 import com.wjd.structure.tree.avl.AVLTNode;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -16,16 +16,14 @@ import java.util.Queue;
 public class BuildLevelAVLTraverse implements AVLTraverse {
 
     /**
-     * 列表访问者
+     * 遍历结果集合
      */
-    private ListVisitor<AVLTNode> visitor;
+    List<AVLTNode> list;
 
     @Override
     public List<AVLTNode> traverse(AVLTNode node) {
-        visitor = new ListVisitor<>();
+        list = new ArrayList<>();
         bfs(node);
-        List<AVLTNode> list = visitor.getList();
-        visitor = null;
         return list;
     }
 
@@ -45,7 +43,7 @@ public class BuildLevelAVLTraverse implements AVLTraverse {
         while (notNull > 0) {
             AVLTNode node = queue.poll();
             notNull--;
-            visitor.visit(node);
+            list.add(node);
             if (node == null) {
                 continue;
             }

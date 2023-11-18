@@ -1,8 +1,8 @@
 package com.wjd.algorithm.tree.redblack.traverse;
 
-import com.wjd.algorithm.tree.ListVisitor;
 import com.wjd.structure.tree.redblack.RBTNode;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -18,14 +18,12 @@ public class BuildLevelRedBlackTraverse implements RedBlackTraverse {
     /**
      * 列表访问者
      */
-    private ListVisitor<RBTNode> visitor;
+    private List<RBTNode> list;
 
     @Override
     public List<RBTNode> traverse(RBTNode node) {
-        visitor = new ListVisitor<>();
+        list = new ArrayList<>();
         bfs(node);
-        List<RBTNode> list = visitor.getList();
-        visitor = null;
         return list;
     }
 
@@ -45,7 +43,7 @@ public class BuildLevelRedBlackTraverse implements RedBlackTraverse {
         while (notNull > 0) {
             RBTNode node = queue.poll();
             notNull--;
-            visitor.visit(node);
+            list.add(node);
             if (node == null) {
                 continue;
             }

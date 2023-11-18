@@ -64,7 +64,7 @@ public class QuickSort implements Sort {
     }
 
     /**
-     * 二分数组
+     * 二分数组（遍历）
      *
      * @param arr   数组
      * @param start [start, end)
@@ -90,7 +90,7 @@ public class QuickSort implements Sort {
     }
 
     /**
-     * 二分数组（另一种写法）
+     * 二分数组（双指针）
      *
      * @param arr   数组
      * @param start [start, end)

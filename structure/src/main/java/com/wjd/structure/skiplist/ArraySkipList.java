@@ -1,6 +1,8 @@
 package com.wjd.structure.skiplist;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * 跳表（数组实现）

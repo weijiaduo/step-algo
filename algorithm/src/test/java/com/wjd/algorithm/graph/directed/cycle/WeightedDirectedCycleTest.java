@@ -1,7 +1,7 @@
 package com.wjd.algorithm.graph.directed.cycle;
 
 import com.wjd.algorithm.graph.Cycle;
-import com.wjd.algorithm.graph.directed.build.impl.FileWeightedDigraphBuilder;
+import com.wjd.algorithm.graph.directed.build.FileWeightedDigraphBuilder;
 import com.wjd.structure.graph.directed.WeightedDigraph;
 import org.junit.jupiter.api.Test;
 

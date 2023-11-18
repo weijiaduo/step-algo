@@ -1,7 +1,5 @@
 package com.wjd.structure.tree.thread;
 
-import com.wjd.structure.tree.binary.TreeNode;
-
 /**
  * 线索二叉树节点
  *
@@ -35,15 +33,13 @@ public class ThreadNode {
      */
     public boolean rTag;
 
-    public ThreadNode(TreeNode node) {
-        this.val = node.val;
-        this.left = node.left != null ? new ThreadNode(node.left) : null;
-        this.right = node.right != null ? new ThreadNode(node.right) : null;
+    public ThreadNode(int val) {
+        this.val = val;
     }
 
     @Override
     public String toString() {
-        return "" + val;
+        return String.valueOf(val);
     }
 
 }

@@ -1,7 +1,7 @@
 package com.wjd.algorithm.graph.undirected.cycle;
 
 import com.wjd.algorithm.graph.Cycle;
-import com.wjd.algorithm.graph.undirected.build.impl.FileGraphBuilder;
+import com.wjd.algorithm.graph.undirected.build.FileGraphBuilder;
 import com.wjd.structure.graph.undirected.Graph;
 import org.junit.jupiter.api.Test;
 

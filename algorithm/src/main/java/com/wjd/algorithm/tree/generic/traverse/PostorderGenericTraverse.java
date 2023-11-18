@@ -1,9 +1,9 @@
 package com.wjd.algorithm.tree.generic.traverse;
 
-import com.wjd.algorithm.tree.ListVisitor;
 import com.wjd.structure.tree.generic.Node;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class PostorderGenericTraverse implements GenericTraverse {
     /**
      * 列表访问者
      */
-    private ListVisitor<Node> visitor;
+    private List<Node> list;
 
     /**
      * 遍历实现类型：
@@ -34,7 +34,7 @@ public class PostorderGenericTraverse implements GenericTraverse {
 
     @Override
     public List<Node> traverse(Node root) {
-        visitor = new ListVisitor<>();
+        list = new ArrayList<>();
         if (type == 3) {
             mark(root);
         } else if (type == 2) {
@@ -42,8 +42,6 @@ public class PostorderGenericTraverse implements GenericTraverse {
         } else {
             recursive(root);
         }
-        List<Node> list = visitor.getList();
-        visitor = null;
         return list;
     }
 
@@ -62,7 +60,7 @@ public class PostorderGenericTraverse implements GenericTraverse {
                 recursive(child);
             }
         }
-        visitor.visit(root);
+        list.add(root);
     }
 
     /**
@@ -90,7 +88,7 @@ public class PostorderGenericTraverse implements GenericTraverse {
             } else {
                 // 子节点已经访问完了
                 node = stack.pop();
-                visitor.visit(node);
+                list.add(node);
                 prev = node;
             }
         }
@@ -114,7 +112,7 @@ public class PostorderGenericTraverse implements GenericTraverse {
             Node node = stack.pop();
             Boolean mark = marks.pop();
             if (mark) {
-                visitor.visit(node);
+                list.add(node);
             } else {
                 // 倒序添加
                 stack.push(node);

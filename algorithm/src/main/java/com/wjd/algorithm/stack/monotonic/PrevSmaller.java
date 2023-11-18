@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 /**
  * 单调递减栈：上一个更小元素的索引
- * 
+ *
  * @author weijiaduo
  * @since 2023/10/12
  */
@@ -55,5 +55,5 @@ public class PrevSmaller {
         }
         return ans;
     }
-    
+
 }

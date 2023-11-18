@@ -183,7 +183,7 @@ public class OpenHashTable implements HashTable {
      */
     protected synchronized void resize() {
         // 数组进行 2 倍扩容
-        Node[] oldTable =  table;
+        Node[] oldTable = table;
         int newLength = oldTable.length << 1;
         table = new Node[newLength];
 

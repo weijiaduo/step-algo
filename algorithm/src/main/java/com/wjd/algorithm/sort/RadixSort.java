@@ -28,7 +28,7 @@ public class RadixSort implements Sort {
 
         // 计算基数大小
         int radix = 0;
-        while(max > 0) {
+        while (max > 0) {
             max = max / 10;
             radix++;
         }

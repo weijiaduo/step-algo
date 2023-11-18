@@ -11,6 +11,7 @@ public class ListStack implements Stack {
     static class Node {
         int val;
         Node next;
+
         public Node(int val) {
             this.val = val;
             next = null;

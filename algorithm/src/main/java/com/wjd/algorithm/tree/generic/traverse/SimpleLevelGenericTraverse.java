@@ -1,9 +1,9 @@
 package com.wjd.algorithm.tree.generic.traverse;
 
-import com.wjd.algorithm.tree.ListVisitor;
 import com.wjd.structure.tree.generic.Node;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
@@ -18,14 +18,12 @@ public class SimpleLevelGenericTraverse implements GenericTraverse {
     /**
      * 列表访问者
      */
-    private ListVisitor<Node> visitor;
+    private List<Node> list;
 
     @Override
     public List<Node> traverse(Node node) {
-        visitor = new ListVisitor<>();
+        list = new ArrayList<>();
         bfs(node);
-        List<Node> list = visitor.getList();
-        visitor = null;
         return list;
     }
 
@@ -48,7 +46,7 @@ public class SimpleLevelGenericTraverse implements GenericTraverse {
                 if (node == null) {
                     continue;
                 }
-                visitor.visit(node);
+                list.add(node);
                 List<Node> children = node.children;
                 if (children != null) {
                     for (Node child : children) {

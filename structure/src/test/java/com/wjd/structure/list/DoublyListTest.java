@@ -69,5 +69,5 @@ class DoublyListTest {
         list.remove(2);
         assertEquals(2, list.size());
     }
-    
+
 }

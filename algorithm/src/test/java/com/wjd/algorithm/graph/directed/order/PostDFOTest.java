@@ -1,7 +1,7 @@
 package com.wjd.algorithm.graph.directed.order;
 
 import com.wjd.algorithm.graph.Order;
-import com.wjd.algorithm.graph.directed.build.impl.FileDigraphBuilder;
+import com.wjd.algorithm.graph.directed.build.FileDigraphBuilder;
 import com.wjd.structure.graph.directed.Digraph;
 import org.junit.jupiter.api.Test;
 

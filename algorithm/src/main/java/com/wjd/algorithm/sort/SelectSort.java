@@ -1,7 +1,5 @@
 package com.wjd.algorithm.sort;
 
-import java.util.Arrays;
-
 /**
  * 选择排序
  * <p>
