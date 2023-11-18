@@ -250,3 +250,7 @@
 ### 9.4 正则表达式（Regex）
 
 - [NFA](algorithm/src/main/java/com/wjd/algorithm/strings/regex/NFAPattern.java)
+
+### 9.5 其他
+
+- [Manacher（最长回文串）](algorithm/src/main/java/com/wjd/algorithm/strings/trick/Manacher.java)
