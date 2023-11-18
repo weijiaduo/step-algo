@@ -59,12 +59,12 @@ public class LetterTrie implements Trie {
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
-            Node trie = cur.children[ch - base];
-            if (trie == null) {
-                trie = new Node();
-                cur.children[ch - base] = trie;
+            Node child = cur.children[ch - base];
+            if (child == null) {
+                child = new Node();
+                cur.children[ch - base] = child;
             }
-            cur = trie;
+            cur = child;
         }
         cur.end = true;
     }

@@ -48,12 +48,12 @@ public class CharacterTrie implements Trie {
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
-            Node trie = cur.children.get(ch);
-            if (trie == null) {
-                trie = new Node();
-                cur.children.put(ch, trie);
+            Node child = cur.children.get(ch);
+            if (child == null) {
+                child = new Node();
+                cur.children.put(ch, child);
             }
-            cur = trie;
+            cur = child;
         }
         cur.end = true;
     }

@@ -44,6 +44,10 @@
   - [单向循环链表（Singly Circular Linked List）]
   - [双向循环链表（Doubly Circular Linked List）]
 - [LRU 链表（LRU Linked List）](algorithm/src/main/java/com/wjd/algorithm/list/LRUList.java)
+- 跳表（SkipList）
+  - [整数跳表（Integer-SkipList）](structure/src/main/java/com/wjd/structure/skiplist/SimpleSkipList.java)
+  - [数组跳表（Array-SkipList）](structure/src/main/java/com/wjd/structure/skiplist/ArraySkipList.java)
+  - [链表跳表（List-SkipList）](structure/src/main/java/com/wjd/structure/skiplist/LinkedSkipList.java)
 
 ## 3. 队列（Queue）
 
@@ -240,9 +244,3 @@
 ### 9.4 正则表达式（Regex）
 
 - [NFA](algorithm/src/main/java/com/wjd/algorithm/strings/regex/NFAPattern.java)
-
-## 10. 跳表（SkipList）
-
-- [整数跳表（Integer-SkipList）](structure/src/main/java/com/wjd/structure/skiplist/SimpleSkipList.java)
-- [数组跳表（Array-SkipList）](structure/src/main/java/com/wjd/structure/skiplist/ArraySkipList.java)
-- [链表跳表（List-SkipList）](structure/src/main/java/com/wjd/structure/skiplist/LinkedSkipList.java)
