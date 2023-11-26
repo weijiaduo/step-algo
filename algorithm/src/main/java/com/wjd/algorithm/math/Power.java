@@ -23,9 +23,9 @@ public class Power {
      * @param n 指数
      * @return 幂
      */
-    public double dfs(double x, int n) {
+    public double recursive(double x, int n) {
         long y = n;
-        return y >= 0 ? dfs(x, y) : 1.0 / dfs(x, -y);
+        return y >= 0 ? recursive(x, y) : 1.0 / recursive(x, -y);
     }
 
     /**
@@ -35,11 +35,11 @@ public class Power {
      * @param y 指数，y >= 0
      * @return 幂
      */
-    private double dfs(double x, long y) {
+    private double recursive(double x, long y) {
         if (y == 0) {
             return 1.0;
         }
-        double half = dfs(x, y >> 1);
+        double half = recursive(x, y >> 1);
         return y % 2 == 0 ? half * half : half * half * x;
     }
 

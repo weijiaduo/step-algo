@@ -11,8 +11,8 @@ public class Gcd {
     /**
      * 递归法
      */
-    public int dfs(int a, int b) {
-        return b > 0 ? dfs(b, a % b) : a;
+    public int recursive(int a, int b) {
+        return b > 0 ? recursive(b, a % b) : a;
     }
 
     /**
