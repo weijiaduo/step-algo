@@ -124,13 +124,16 @@ public class HeapImpl<T extends Comparable<T>> implements Heap<T> {
     private void siftUp(int index) {
         int i = index;
         while (i > 0) {
+            int m = i;
             int p = parent(i);
             if (p > 0 && prior(i, p)) {
-                swap(i, p);
-                i = p;
-            } else {
+                m = p;
+            }
+            if (m == i) {
                 break;
             }
+            swap(m, i);
+            i = m;
         }
     }
 
