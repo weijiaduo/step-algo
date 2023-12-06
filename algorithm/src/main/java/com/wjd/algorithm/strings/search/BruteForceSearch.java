@@ -14,10 +14,18 @@ package com.wjd.algorithm.strings.search;
  */
 public class BruteForceSearch implements Search {
 
+    /**
+     * 模式串
+     */
+    final String pat;
+
+    public BruteForceSearch(String pat) {
+        this.pat = pat;
+    }
+
     @Override
-    public int search(String pat, String txt) {
-        int n = txt.length();
-        int m = pat.length();
+    public int search(String txt) {
+        int m = pat.length(), n = txt.length();
         for (int i = 0; i <= n - m; i++) {
             int j = 0;
             for (; j < m; j++) {

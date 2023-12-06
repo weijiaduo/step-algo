@@ -32,9 +32,10 @@ class BruteForceSearchTest {
                 -1,
                 8
         };
-        Search bfs = new BruteForceSearch();
         for (int i = 0; i < inputs.length; i++) {
-            assertEquals(expects[i], bfs.search(inputs[i][0], inputs[i][1]));
+            Search bfs = new BruteForceSearch(inputs[i][0]);
+            assertEquals(expects[i], bfs.search(inputs[i][1]));
         }
     }
+
 }

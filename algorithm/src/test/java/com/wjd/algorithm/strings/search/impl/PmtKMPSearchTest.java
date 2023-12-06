@@ -32,9 +32,9 @@ class PmtKMPSearchTest {
                 -1,
                 8
         };
-        Search kmp = new PmtKMPSearch();
         for (int i = 0; i < inputs.length; i++) {
-            assertEquals(expects[i], kmp.search(inputs[i][0], inputs[i][1]));
+            Search kmp = new PmtKMPSearch(inputs[i][0]);
+            assertEquals(expects[i], kmp.search(inputs[i][1]));
         }
     }
 }

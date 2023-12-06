@@ -20,24 +20,40 @@ public class RabinKarpSearch implements Search {
     /**
      * 对哈希值取余，避免溢出
      */
-    private long mod = 99999999999997L;
+    private final long mod;
+
+    /**
+     * 模式串
+     */
+    final String pat;
+    /**
+     * 模式串哈希值
+     */
+    long phash;
+
+    public RabinKarpSearch(String pat) {
+        this.pat = pat;
+        phash = 0;
+        int m = pat.length();
+        mod = longRandomPrime();
+        for (int i = 0; i < m; i++) {
+            phash = (R * phash + pat.charAt(i)) % mod;
+        }
+    }
 
     @Override
-    public int search(String pat, String txt) {
+    public int search(String txt) {
         int m = pat.length(), n = txt.length();
         if (m == 0 || n < m) {
             return -1;
         }
 
-        mod = longRandomPrime();
-        long phash = 0, thash = 0, rm = 1;
+        long thash = 0, rm = 1;
         for (int i = 0; i < m - 1; i++) {
-            phash = (R * phash + pat.charAt(i)) % mod;
             thash = (R * thash + txt.charAt(i)) % mod;
             // 首字符的幂值 R^(M-1)
             rm = (R * rm) % mod;
         }
-        phash = (R * phash + pat.charAt(m - 1)) % mod;
 
         for (int i = m - 1, j = 0; i < n; i++, j++) {
             // 追加新字符的哈希值

@@ -13,9 +13,22 @@ public class DFAKMPSearch implements Search {
      */
     private static final int R = 256;
 
+    /**
+     * 模式串
+     */
+    final String pat;
+    /**
+     * 有限状态机
+     */
+    int[][] dfa;
+
+    public DFAKMPSearch(String pat) {
+        this.pat = pat;
+        dfa = getDFA(pat, R);
+    }
+
     @Override
-    public int search(String pat, String txt) {
-        int[][] dfa = getDFA(pat, R);
+    public int search(String txt) {
         int m = pat.length(), n = txt.length();
         int i = 0, j = 0;
         for (; i < n && j < m; i++) {

@@ -8,11 +8,24 @@ package com.wjd.algorithm.strings.search;
  */
 public class PmtKMPSearch implements Search {
 
+    /**
+     * 模式串
+     */
+    final String pat;
+    /**
+     * pmt 数组
+     */
+    int[] pmt;
+
+    public PmtKMPSearch(String pat) {
+        this.pat = pat;
+        pmt = getPmt(pat);
+    }
+
     @Override
-    public int search(String pat, String txt) {
-        int[] pmt = getPmt(pat);
-        int i = 0, j = 0;
+    public int search(String txt) {
         int m = pat.length(), n = txt.length();
+        int i = 0, j = 0;
         while (i < n && j < m) {
             if (txt.charAt(i) == pat.charAt(j)) {
                 // 匹配成功，匹配下一个字符

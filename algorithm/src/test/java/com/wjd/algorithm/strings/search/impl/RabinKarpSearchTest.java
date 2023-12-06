@@ -32,9 +32,9 @@ class RabinKarpSearchTest {
                 -1,
                 8
         };
-        Search bfs = new RabinKarpSearch();
         for (int i = 0; i < inputs.length; i++) {
-            assertEquals(expects[i], bfs.search(inputs[i][0], inputs[i][1]));
+            Search bfs = new RabinKarpSearch(inputs[i][0]);
+            assertEquals(expects[i], bfs.search(inputs[i][1]));
         }
     }
 }

@@ -8,11 +8,24 @@ package com.wjd.algorithm.strings.search;
  */
 public class NextKMPSearch implements Search {
 
+    /**
+     * 模式串
+     */
+    final String pat;
+    /**
+     * next 数组
+     */
+    int[] next;
+
+    public NextKMPSearch(String pat) {
+        this.pat = pat;
+        next = getNext(pat);
+    }
+
     @Override
-    public int search(String pat, String txt) {
-        int[] next = getNext(pat);
-        int i = 0, j = 0;
+    public int search(String txt) {
         int m = pat.length(), n = txt.length();
+        int i = 0, j = 0;
         while (i < n && j < m) {
             if (j == -1 || txt.charAt(i) == pat.charAt(j)) {
                 // 匹配主串和模式串的下一个字符

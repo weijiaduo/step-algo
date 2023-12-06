@@ -32,9 +32,9 @@ class NextKMPSearchTest {
                 -1,
                 8
         };
-        Search kmp = new NextKMPSearch();
         for (int i = 0; i < inputs.length; i++) {
-            assertEquals(expects[i], kmp.search(inputs[i][0], inputs[i][1]));
+            Search kmp = new NextKMPSearch(inputs[i][0]);
+            assertEquals(expects[i], kmp.search(inputs[i][1]));
         }
     }
 }
