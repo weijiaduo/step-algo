@@ -2,7 +2,7 @@
 
 算法之行，始于足下，亲自写一遍各种经典的数据结构与算法。
 
-[数据结构与算法介绍（待完善）](https://weijiaduo.github.io/)
+[数据结构与算法介绍](https://weijiaduo.github.io/algo-docs/)
 
 ## 1. 数组（Array）
 
